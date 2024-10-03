@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Headline",
+        "name": "headline"
+    },
+    {
+        "title": "Paragraph",
+        "name": "paragraph"
+    },
+    {
+        "title": "Button",
+        "name": "button"
+    },
+    {
+        "title": "Image",
+        "name": "image"
+    }
+]
