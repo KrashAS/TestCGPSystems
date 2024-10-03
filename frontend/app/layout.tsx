@@ -1,6 +1,7 @@
 import { Roboto } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
+import ReduxProvider from "@/store/ReduxProvider";
 
 export const metadata: Metadata = {
     title: "REACT EDITOR Test",
@@ -20,11 +21,13 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={roboto.className}>
-            <body
-                className={`antialiased`}
-            >
-                {children}
-            </body>
+            <ReduxProvider>
+                <body
+                    className={`antialiased`}
+                >
+                    {children}
+                </body>
+            </ReduxProvider>
         </html>
     );
 }
