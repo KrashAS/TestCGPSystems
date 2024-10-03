@@ -1,17 +1,17 @@
 'use client'
 import buttonsData from '@/data/buttons.json';
-import { useState } from 'react';
-import ButtonBlock from './ButtonBlock';
 import { IButton } from '@/interfaces/models/buttons.interface';
+import { IBlocksProps } from '@/store/blocks/block.props';
+import { connect, ConnectedProps } from 'react-redux';
+import ButtonBlock from './ButtonBlock';
 
-const SideBar = () => {
-    const [items, setItems] = useState<IButton[]>([]);
+const SideBar = ({ blocks, setBlocks }: PropsFromRedux) => {
 
     const handleAddItem = (newItem: IButton) => {
-        setItems((prevItems) => [...prevItems, newItem]);
+        setBlocks([...blocks, newItem]);
     };
 
-    console.log(items);
+    console.log(blocks, 'sfsdfsdfdsfdsfsd');
 
     return (
         <aside className="w-[270px] p-[30px]">
@@ -24,4 +24,20 @@ const SideBar = () => {
     )
 }
 
-export default SideBar
+const mapState = (state: { blocks: IBlocksProps }) => {
+    return {
+        blocks: state.blocks.blocks,
+    };
+};
+
+const mapDispatch = {
+    setBlocks: (blocks: IButton[]) => ({
+        type: "SET_BLOCK",
+        blocks,
+    }),
+};
+
+const connector = connect(mapState, mapDispatch);
+export type PropsFromRedux = ConnectedProps<typeof connector>;
+export default connector(SideBar);
+
