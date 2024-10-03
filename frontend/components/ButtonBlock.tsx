@@ -6,35 +6,17 @@ interface ButtonBlockProps extends IButtonData {
     onAdd: (newItem: IButton) => void;
 }
 
-const ButtonBlock: FC<ButtonBlockProps> = ({ title, name, onAdd }) => {
+const ButtonBlock: FC<ButtonBlockProps> = ({ title, name, imageSrc, onAdd }) => {
     const generateUniqueId = () => {
         return `${name}-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
     };
-    let imageSrc: string | null = null;
-
-    switch (name) {
-        case "headline":
-            imageSrc = "/images/headline.png";
-            break;
-        case "image":
-            imageSrc = "/images/image.png";
-            break;
-        case "paragraph":
-            imageSrc = "/images/paragraph.png";
-            break;
-        case "button":
-            imageSrc = "/images/image.png";
-            break;
-        default:
-            imageSrc = null;
-    }
 
     const handleClick = () => {
         const newItem = {
             id: generateUniqueId(),
             title,
             name,
-            src: imageSrc || "",
+            imageSrc: imageSrc || "",
         };
         onAdd(newItem);
     };

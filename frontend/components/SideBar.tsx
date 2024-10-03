@@ -1,9 +1,9 @@
 'use client'
-import buttonsData from '@/data/buttons.json';
-import { IButton } from '@/interfaces/models/buttons.interface';
-import { IBlocksProps } from '@/store/blocks/block.props';
-import { connect, ConnectedProps } from 'react-redux';
-import ButtonBlock from './ButtonBlock';
+import buttonsData from "@/data/buttons.json";
+import { IButton } from "@/interfaces/models/buttons.interface";
+import { IBlocksProps } from "@/store/blocks/block.props";
+import { connect, ConnectedProps } from "react-redux";
+import ButtonBlock from "./ButtonBlock";
 
 const SideBar = ({ blocks, setBlocks }: PropsFromRedux) => {
 
@@ -15,7 +15,7 @@ const SideBar = ({ blocks, setBlocks }: PropsFromRedux) => {
         <aside className="w-[270px] p-[30px]">
             <div className="grid grid-cols-2 gap-[10px]">
                 {buttonsData.map((data, index) => (
-                    <ButtonBlock key={index} title={data.title} name={data.name} onAdd={handleAddItem} />
+                    <ButtonBlock key={index} title={data.title} name={data.name} imageSrc={data.imageSrc} onAdd={handleAddItem} />
                 ))}
             </div>
         </aside>

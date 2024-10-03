@@ -23,7 +23,7 @@ export default function RootLayout({
         <html lang="en" className={roboto.className}>
             <ReduxProvider>
                 <body
-                    className={`antialiased`}
+                    className="antialiased"
                 >
                     {children}
                 </body>

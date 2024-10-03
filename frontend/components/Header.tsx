@@ -1,4 +1,3 @@
-
 const Header = () => {
     return (
         <header className="w-full h-[70px] border-b border-[#E4E6F1] pl-[31px] flex items-center">
