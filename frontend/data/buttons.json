@@ -1,18 +1,22 @@
 [
     {
         "title": "Headline",
-        "name": "headline"
+        "name": "headline",
+        "imageSrc": "/images/headline.png"
     },
     {
         "title": "Paragraph",
-        "name": "paragraph"
+        "name": "paragraph",
+        "imageSrc": "/images/paragraph.png"
     },
     {
         "title": "Button",
-        "name": "button"
+        "name": "button",
+        "imageSrc": "/images/image.png"
     },
     {
         "title": "Image",
-        "name": "image"
+        "name": "image",
+        "imageSrc": "/images/image.png"
     }
 ]

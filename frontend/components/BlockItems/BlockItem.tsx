@@ -1,4 +1,4 @@
-import { IButton } from '@/interfaces/models/buttons.interface';
+import { IButton } from "@/interfaces/models/buttons.interface";
 import Image from "next/image";
 
 interface IBlockItemProps {
@@ -6,30 +6,12 @@ interface IBlockItemProps {
 }
 
 const BlockItem = ({ item }: IBlockItemProps) => {
-    let imageSrc: string | null = null;
-
-    switch (item.name) {
-        case "headline":
-            imageSrc = "/images/headline.png";
-            break;
-        case "image":
-            imageSrc = "/images/image.png";
-            break;
-        case "paragraph":
-            imageSrc = "/images/paragraph.png";
-            break;
-        case "button":
-            imageSrc = "/images/image.png";
-            break;
-        default:
-            imageSrc = null;
-    }
 
     return (
-        <div className='w-full bg-white rounded-md flex flex-col gap-[10px] items-center py-[15px] mt-[15px] hover:cursor-pointer'>
-            {imageSrc && (
+        <div className="w-full bg-white rounded-md flex flex-col gap-[10px] items-center py-[15px] mt-[15px] hover:cursor-pointer">
+            {item.imageSrc && (
                 <Image
-                    src={imageSrc}
+                    src={item.imageSrc}
                     alt={item.title}
                     width={25}
                     height={25}
