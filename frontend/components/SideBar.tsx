@@ -8,10 +8,8 @@ import ButtonBlock from './ButtonBlock';
 const SideBar = ({ blocks, setBlocks }: PropsFromRedux) => {
 
     const handleAddItem = (newItem: IButton) => {
-        setBlocks([...blocks, newItem]);
+        setBlocks([newItem, ...blocks]);
     };
-
-    console.log(blocks, 'sfsdfsdfdsfdsfsd');
 
     return (
         <aside className="w-[270px] p-[30px]">
