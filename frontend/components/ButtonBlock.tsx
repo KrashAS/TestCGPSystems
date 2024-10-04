@@ -1,9 +1,9 @@
-import { IButton, IButtonData } from "@/interfaces/models/buttons.interface";
+import { IButtonBlock, IButtonBlockData } from "@/interfaces/models/buttons.interface";
 import Image from "next/image";
 import { FC } from "react";
 
-interface ButtonBlockProps extends IButtonData {
-    onAdd: (newItem: IButton) => void;
+interface ButtonBlockProps extends IButtonBlockData {
+    onAdd: (newItem: IButtonBlock) => void;
 }
 
 const ButtonBlock: FC<ButtonBlockProps> = ({ title, name, imageSrc, onAdd }) => {

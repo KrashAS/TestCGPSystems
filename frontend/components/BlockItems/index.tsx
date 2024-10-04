@@ -1,27 +1,37 @@
 'use client'
-
-import { IButton } from "@/interfaces/models/buttons.interface";
+import { IButtonBlock } from "@/interfaces/models/buttons.interface";
 import { IBlocksProps } from "@/store/blocks/block.props";
 import { connect, ConnectedProps } from "react-redux";
 import BlockItem from "./BlockItem";
 
-const BlockItems = ({ blocks }: PropsFromRedux) => {
+const BlockItems = ({ blocks, currentBlock, setCurrentBlock }: PropsFromRedux) => {
+
+
     return (
-        blocks ? blocks.map((item) => <BlockItem key={item.id} item={item} />) : <></>
+        blocks ? blocks.map((item) =>
+            <BlockItem
+                key={item.id}
+                item={item}
+                currentBlock={currentBlock}
+                setCurrentBlock={setCurrentBlock}
+            />) : <></>
     )
 }
 
 const mapState = (state: { blocks: IBlocksProps }) => {
-    return {
-        blocks: state.blocks.blocks,
-    };
+    const { blocks, currentBlock } = state.blocks;
+    return { blocks, currentBlock };
 };
 
 const mapDispatch = {
-    setBlocks: (blocks: IButton[]) => ({
+    setBlocks: (blocks: IButtonBlock[]) => ({
         type: "SET_BLOCK",
         blocks,
     }),
+    setCurrentBlock: (currentBlock: IButtonBlock) => ({
+        type: "SET_CURRENT_BLOCK",
+        currentBlock,
+    })
 };
 
 const connector = connect(mapState, mapDispatch);
