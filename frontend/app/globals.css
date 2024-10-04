@@ -23,4 +23,7 @@ body {
     .text-balance {
         text-wrap: balance;
     }
+    * {
+        transition: all 0.25s ease-in-out;
+    }
 }

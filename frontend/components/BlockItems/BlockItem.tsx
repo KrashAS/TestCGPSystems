@@ -9,10 +9,11 @@ interface IBlockItemProps {
 }
 
 const BlockItem = ({ item, currentBlock, setCurrentBlock }: IBlockItemProps) => {
+    const isActive = currentBlock?.id === item.id;
 
     return (
-        <div className={`relative w-full  rounded-md flex flex-col gap-[10px] items-center py-[15px] mt-[15px] hover:cursor-pointer ${currentBlock?.id === item.id ? "bg-[#D9E7FF]" : "bg-white"}`} onClick={() => setCurrentBlock(item)}>
-            <ActionsBlock />
+        <div className={`relative w-full  rounded-md flex flex-col gap-[10px] items-center py-[15px] mt-[15px] hover:cursor-pointer ${isActive ? "bg-[#D9E7FF]" : "bg-white"}`} onClick={() => setCurrentBlock(item)}>
+            <ActionsBlock isActive={isActive} />
             {item.imageSrc && (
                 <Image
                     src={item.imageSrc}
