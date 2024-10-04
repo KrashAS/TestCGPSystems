@@ -16,7 +16,7 @@ const MainContent = () => {
                     width={540}
                     height={230}
                 />
-                <h2 className="font-bold text-[22px] leading-[33px] tracking-[0.02em]">A legendary cap set that feels like new</h2>
+                <h2 className="font-bold text-[22px] leading-[33px] tracking-[0.02em] text-text-black">A legendary cap set that feels like new</h2>
                 <p className="text-[#97AACD] font-normal text-[14px] leading-[21px] tracking-[0.02em] text-center">Prompt your customer to revisit your store by showing them the products they left
                     <br /> behind. Consider offering them a coupon code to close the deal.
                     <br /> Using the `Insert` panel on the right, drag and drop

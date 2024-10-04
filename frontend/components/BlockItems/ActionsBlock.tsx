@@ -1,19 +1,31 @@
+import { IButtonBlock } from '@/interfaces/models/buttons.interface';
+import { IBlocksProps } from '@/store/blocks/block.props';
 import { FC } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import ActionButton from '../UI/buttons/ActionButton';
 import IconArrowDown from '../icons/IconArrowDown';
 import IconArrowUp from '../icons/IconArrowUp';
 import IconCopy from '../icons/IconCopy';
 import IconTrash from '../icons/IconTrash';
 
-interface ActionsBlockProps {
+interface ActionsBlockProps extends PropsFromRedux {
     isActive: boolean;
 }
 
-const ActionsBlock: FC<ActionsBlockProps> = ({ isActive }) => {
+const ActionsBlock: FC<ActionsBlockProps> = ({ isActive, blocks, currentBlock, setBlocks, setCurrentBlock }) => {
     const onUpClick = () => { console.log('Move Up'); };
+
     const onDownClick = () => { console.log('Move Down'); };
+
     const onCopyClick = () => { console.log('Copy'); };
-    const onDeleteClick = () => { console.log('Delete'); };
+
+    const onDeleteClick = () => {
+        if (currentBlock) {
+            const updatedBlocks = blocks.filter(block => block.id !== currentBlock.id);
+            setBlocks(updatedBlocks);
+            setCurrentBlock(null);
+        }
+    };
 
     return (
         <div
@@ -33,4 +45,22 @@ const ActionsBlock: FC<ActionsBlockProps> = ({ isActive }) => {
     )
 }
 
-export default ActionsBlock
+const mapState = (state: { blocks: IBlocksProps }) => {
+    const { blocks, currentBlock } = state.blocks;
+    return { blocks, currentBlock };
+};
+
+const mapDispatch = {
+    setBlocks: (blocks: IButtonBlock[]) => ({
+        type: "SET_BLOCK",
+        blocks,
+    }),
+    setCurrentBlock: (currentBlock: IButtonBlock | null) => ({
+        type: "SET_CURRENT_BLOCK",
+        currentBlock,
+    })
+};
+
+const connector = connect(mapState, mapDispatch);
+export type PropsFromRedux = ConnectedProps<typeof connector>;
+export default connector(ActionsBlock);

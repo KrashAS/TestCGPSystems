@@ -31,7 +31,7 @@ const ButtonBlock: FC<ButtonBlockProps> = ({ title, name, imageSrc, onAdd }) => 
                     height={25}
                 />
             )}
-            <p className="text-[12px] font-normal leading-[18px] tracking-[0.02em]">{title}</p>
+            <p className="text-[12px] font-normal leading-[18px] tracking-[0.02em] text-text-black">{title}</p>
         </button>
 
     );
