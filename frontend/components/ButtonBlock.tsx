@@ -11,7 +11,7 @@ const ButtonBlock: FC<ButtonBlockProps> = ({ title, name, imageSrc, onAdd }) => 
         return `${name}-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
     };
 
-    const handleClick = () => {
+    const onClickButtonBlock = () => {
         const newItem = {
             id: generateUniqueId(),
             title,
@@ -22,7 +22,7 @@ const ButtonBlock: FC<ButtonBlockProps> = ({ title, name, imageSrc, onAdd }) => 
     };
 
     return (
-        <button className="bg-[#F6F9FE] p-[10px] rounded hover:bg-[#D9E7FF] flex flex-col items-center gap-[10px]" onClick={handleClick}>
+        <button className="bg-[#F6F9FE] p-[10px] rounded hover:bg-[#D9E7FF] flex flex-col items-center gap-[10px]" onClick={onClickButtonBlock}>
             {imageSrc && (
                 <Image
                     src={imageSrc}

@@ -7,7 +7,7 @@ import ButtonBlock from "./ButtonBlock";
 
 const SideBar = ({ blocks, setBlocks }: PropsFromRedux) => {
 
-    const handleAddItem = (newItem: IButtonBlock) => {
+    const addItem = (newItem: IButtonBlock) => {
         setBlocks([newItem, ...blocks]);
     };
 
@@ -15,7 +15,7 @@ const SideBar = ({ blocks, setBlocks }: PropsFromRedux) => {
         <aside className="w-[270px] p-[30px] border-r border-[#E4E6F1]">
             <div className="grid grid-cols-2 gap-[10px]">
                 {buttonsData.map((data, index) => (
-                    <ButtonBlock key={index} title={data.title} name={data.name} imageSrc={data.imageSrc} onAdd={handleAddItem} />
+                    <ButtonBlock key={index} title={data.title} name={data.name} imageSrc={data.imageSrc} onAdd={addItem} />
                 ))}
             </div>
         </aside>
