@@ -1,14 +1,18 @@
-import { IButton } from "@/interfaces/models/buttons.interface";
+import { IButtonBlock } from "@/interfaces/models/buttons.interface";
 import Image from "next/image";
+import ActionsBlock from "./ActionsBlock";
 
 interface IBlockItemProps {
-    item: IButton;
+    item: IButtonBlock;
+    currentBlock: IButtonBlock | null;
+    setCurrentBlock: (currentBlock: IButtonBlock) => void;
 }
 
-const BlockItem = ({ item }: IBlockItemProps) => {
+const BlockItem = ({ item, currentBlock, setCurrentBlock }: IBlockItemProps) => {
 
     return (
-        <div className="w-full bg-white rounded-md flex flex-col gap-[10px] items-center py-[15px] mt-[15px] hover:cursor-pointer">
+        <div className={`relative w-full  rounded-md flex flex-col gap-[10px] items-center py-[15px] mt-[15px] hover:cursor-pointer ${currentBlock?.id === item.id ? "bg-[#D9E7FF]" : "bg-white"}`} onClick={() => setCurrentBlock(item)}>
+            <ActionsBlock />
             {item.imageSrc && (
                 <Image
                     src={item.imageSrc}

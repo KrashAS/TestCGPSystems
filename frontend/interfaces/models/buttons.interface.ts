@@ -1,9 +1,9 @@
-export interface IButtonData {
+export interface IButtonBlockData {
     title: string;
     name: string;
     imageSrc: string;
 }
 
-export interface IButton extends IButtonData {
+export interface IButtonBlock extends IButtonBlockData {
     id: string;
 }

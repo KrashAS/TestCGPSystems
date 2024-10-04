@@ -1,5 +1,6 @@
-import { IButton } from "@/interfaces/models/buttons.interface";
+import { IButtonBlock } from "@/interfaces/models/buttons.interface";
 
 export interface IBlocksProps {
-    blocks: IButton[];
+    blocks: IButtonBlock[];
+    currentBlock: IButtonBlock | null;
 }

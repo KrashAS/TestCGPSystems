@@ -9,6 +9,11 @@ const popupReducer = (state: IBlocksProps = initStore, action: AnyAction) => {
                 ...state,
                 blocks: action.blocks,
             };
+        case "SET_CURRENT_BLOCK":
+            return {
+                ...state,
+                currentBlock: action.currentBlock,
+            };
         default:
             return state;
     }
