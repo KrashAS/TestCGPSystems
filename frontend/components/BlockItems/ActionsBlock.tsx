@@ -13,11 +13,42 @@ interface ActionsBlockProps extends PropsFromRedux {
 }
 
 const ActionsBlock: FC<ActionsBlockProps> = ({ isActive, blocks, currentBlock, setBlocks, setCurrentBlock }) => {
-    const onUpClick = () => { console.log('Move Up'); };
+    const generateUniqueId = () => {
+        return `${currentBlock?.name}-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    };
 
-    const onDownClick = () => { console.log('Move Down'); };
+    const onUpClick = () => {
+        if (currentBlock) {
+            const currentIndex = blocks.findIndex(block => block.id === currentBlock.id);
+            if (currentIndex > 0) {
+                const newBlocks = [...blocks];
+                [newBlocks[currentIndex], newBlocks[currentIndex - 1]] = [newBlocks[currentIndex - 1], newBlocks[currentIndex]];
+                setBlocks(newBlocks);
+            }
+        }
+    };
 
-    const onCopyClick = () => { console.log('Copy'); };
+    const onDownClick = () => {
+        if (currentBlock) {
+            const currentIndex = blocks.findIndex(block => block.id === currentBlock.id);
+            if (currentIndex < blocks.length - 1) {
+                const newBlocks = [...blocks];
+                [newBlocks[currentIndex], newBlocks[currentIndex + 1]] = [newBlocks[currentIndex + 1], newBlocks[currentIndex]];
+                setBlocks(newBlocks);
+            }
+        }
+    };
+
+    const onCopyClick = () => {
+        if (currentBlock) {
+            const newItem = {
+                ...currentBlock,
+                id: generateUniqueId(),
+            };
+            const updatedBlocks = [newItem, ...blocks];
+            setBlocks(updatedBlocks);
+        }
+    };
 
     const onDeleteClick = () => {
         if (currentBlock) {
