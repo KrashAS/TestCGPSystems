@@ -24,6 +24,6 @@ body {
         text-wrap: balance;
     }
     * {
-        transition: all 0.25s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
 }
